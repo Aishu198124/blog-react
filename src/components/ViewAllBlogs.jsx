@@ -23,7 +23,7 @@ const ViewAllBlogs = () => {
 
           {blogs.map((blog, index) => (
             <li key={index} className="bg-white shadow-lg rounded-lg p-6">
-              <h3 className="text-xl font-semibold text-gray-800">{blog.title}</h3>
+              <h3 className="text-xl font-semibold text-gray-800">{blog.title} | {blog.author}</h3>
               <p className="text-gray-600 mb-4">{blog.description}</p>
               <p className="text-sm text-gray-500">Likes: {blog.likes} | Views: {blog.views}</p>
               <Link to={`/viewblog/${index}`} onClick={() => handleViewBlog(index)} className="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300" >

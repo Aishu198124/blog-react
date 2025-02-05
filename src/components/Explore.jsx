@@ -20,11 +20,12 @@ const Explore = () => {
       {blogs.length > 0 ? (
         <ul className="space-y-8">
           {blogs.map((blog, index) => (
-            <li key={index} className="bg-white shadow-lg rounded-lg p-6">
+            <li key={index} className="bg-white rounded-lg p-6">
               <h3 className="text-xl font-semibold text-gray-800">{blog.title}</h3>
+              <p className="text-red-600 mb-4">{blog.author}</p>
               <p className="text-gray-600 mb-4">{blog.description}</p>
               <p className="text-sm text-gray-500 mb-4">Likes: {blog.likes} | Views: {blog.views}</p>
-              <Link to={`/viewblog/${index}`} onClick={() => handleViewBlog(index)} className="mt-10 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300" >
+              <Link to={`/viewblog/${index}`} onClick={() => handleViewBlog(index)} className="mt-10 px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition duration-300" >
                 View Full Blog
               </Link>
             </li>
@@ -35,7 +36,7 @@ const Explore = () => {
 
       <div className="mt-8 text-center">
         <Link to="/viewallblogs">
-          <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">More</button>
+          <button className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300">More</button>
         </Link>
       </div>
     </div>

@@ -74,10 +74,13 @@ const FullBlogView = () => {
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
       {isEditing ? (
         <div>
+          <p className="text-xs text-gray-400">Blog Title</p>
           <input type="text" name="title" value={blog.title} onChange={handleChange} className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Edit Title"  />
-          
+          <p className="text-xs text-gray-400">Author</p>
+          <input type="text" name="author" value={blog.author} onChange={handleChange} className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Edit Author Name"  />
+          <p className="text-xs text-gray-400">Description</p>
           <input type="text" name="description" value={blog.description} onChange={handleChange} className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Edit Description" />
-
+          <p className="text-xs text-gray-400">Content</p>
           <textarea name="content"  value={blog.content} onChange={handleChange} className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none h-64" placeholder="Edit Content" />
 
           <div className="flex space-x-4">
@@ -87,7 +90,7 @@ const FullBlogView = () => {
         </div>
       ) : (
         <div>
-          <h2 className="max-w-full break-words text-3xl font-bold text-gray-800 mb-4 whitespace-pre-wrap">{blog.title}</h2>
+          <h2 className="max-w-full break-words text-3xl font-bold text-gray-800 mb-4 whitespace-pre-wrap">{blog.title}<h1 className='text-xl text-green-800'>by {blog.author}</h1></h2>
           <p className="text-sm text-gray-500 mb-4 text-orange-500">Likes: {blog.likes} | Views: {blog.views}</p>
           <p className="text-xs text-gray-400">About the Blog</p>
           <p className="text-md text-gray-700 mb-4 whitespace-pre-wrap break-words">{blog.description}</p>
