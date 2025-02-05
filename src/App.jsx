@@ -11,7 +11,6 @@ function App() {
         <nav className="bg-green-800 text-white p-4 mb-6">
           <div className="max-w-7xl mx-auto">
             <Link to="/" className="text-white hover:text-gray-200">
-              {/* Adjusted BlogyTails heading */}
               <h1 className="text-4xl font-extrabold text-white text-center">
                 BlogyTails
               </h1>
@@ -20,7 +19,7 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<HomePage />} /> {/* Default route */}
+          <Route path="/" element={<HomePage />} />
           <Route path="/createblog" element={<CreateBlog />} />
           <Route path="/viewallblogs" element={<ViewAllBlogs />} />
           <Route path="/viewblog/:index" element={<FullBlogView />} />
