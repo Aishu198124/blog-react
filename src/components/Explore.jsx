@@ -1,44 +1,60 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Explore = () => {
   const [blogs, setBlogs] = useState([]);
 
   // Fetch blogs from localStorage when the component mounts
   useEffect(() => {
-    // Get the blogs from localStorage
     const storedBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
-
-    // Get the first 10 blogs from the array
     const first5Blogs = storedBlogs.slice(0, 5);
-
-    // Set the blogs state with the first 10 blogs
     setBlogs(first5Blogs);
   }, []);
 
+  // Handle view blog button click
+  const handleViewBlog = (index) => {
+    const updatedBlogs = [...blogs];
+    updatedBlogs[index].views += 1;
+
+    // Save updated blogs to localStorage
+    localStorage.setItem('blogs', JSON.stringify(updatedBlogs));
+    setBlogs(updatedBlogs);
+  };
+
   return (
-    <div>
+    <div className="py-8 px-150">
       {/* Loop through the blogs and display them */}
       {blogs.length > 0 ? (
-        <ul>
+        <ul className="space-y-8">
           {blogs.map((blog, index) => (
-            <li key={index}>
-              <h3>{blog.title}</h3>
-              <p>{blog.description}</p>
-              <p>Likes: {blog.likes} | Views: {blog.views}</p>
-              <Link to={`/viewblog/${index}`}>
-                    <button>View Full Blog</button>
-                </Link>
+            <li key={index} className="bg-white shadow-lg rounded-lg p-6">
+              <h3 className="text-xl font-semibold text-gray-800">{blog.title}</h3>
+              <p className="text-gray-600 mb-4">{blog.description}</p>
+              <p className="text-sm text-gray-500 mb-4">Likes: {blog.likes} | Views: {blog.views}</p>
+
+              {/* View Full Blog button */}
+              <Link
+                to={`/viewblog/${index}`}
+                onClick={() => handleViewBlog(index)}
+                className="mt-10 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300"
+              >
+                View Full Blog
+              </Link>
             </li>
           ))}
         </ul>
       ) : (
-        <p>No blogs found.</p>
+        <p className="text-center text-gray-600">No blogs found.</p>
       )}
 
-      <Link to="/viewallblogs">
-            <button>More</button>
-      </Link>
+      {/* Link to view all blogs */}
+      <div className="mt-8 text-center">
+        <Link to="/viewallblogs">
+          <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
+            More
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
